@@ -2,16 +2,12 @@ import PokemonCard from "./PokemonCard";
 import './PokemonsList.css'
 
 const PokemonsList = ({ pokemons }) => {
-    console.log('pokemons ', pokemons)
-    // {
-    //     "name": "bulbasaur",
-    //     "url": "https://pokeapi.co/api/v2/pokemon/1/"
-    //   }
+
     return (
         <div className="PokemonsList">
             {
                 pokemons.map(value => {
-                    return <PokemonCard name={value.name} key={value.name} />;
+                    return <PokemonCard name={value.name} key={value.name} image={value.sprites.front_default} abilities={value.abilities[0].ability.name}/>;
                 })
             }
         </div>
