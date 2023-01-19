@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { getPokemon } from './api';
-import { get } from "immutable";
+import { get, getIn } from "immutable";
 import { getPokemonsWithDetails, setLoading } from './actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Spin } from 'antd';
@@ -11,10 +11,9 @@ import './App.css';
 
 function App() {
 
-  const pokemons = useSelector(state => get(state, 'pokemons')).toJS();
-  const loading = useSelector(state => get(state, 'loading'));
-  // const loading = useSelector((state) => state.loading);
-  // const loading = false;
+  const pokemons = useSelector(state => getIn(state, ['data','pokemons'])).toJS();
+  const loading = useSelector(state => getIn(state, ['ui','loading']));
+
   const dispatch = useDispatch();
 
 
